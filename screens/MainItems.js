@@ -2,7 +2,6 @@ import React, {useEffect, useState, useRef} from 'react';
 import { StyleSheet, View, FlatList, Text, Dimensions, Keyboard } from 'react-native';
 import Header from "../components/Header"
 import Item from "../components/Item"
-//import Storage from "../classes/Storage"
 import CircleButton from "../components/CircleButton"
 import OpacityCircleButton from "../components/OpacityCircleButton"
 import BottomInput from "../components/BottomInput"
@@ -13,8 +12,8 @@ import Color from '../classes/Color';
 
 
 function useForceUpdate(){
-    const [value, setValue] = useState(0); // integer state
-    return () => setValue(value => value + 1); // update the state to force render
+    const [value, setValue] = useState(0);
+    return () => setValue(value => value + 1);
 }
 
 const Storage = {
@@ -76,27 +75,10 @@ function MainItems(props){
     }
 
     useEffect(()=>{
-        //deleteItems()
         setItemsFromStorage()
         
-        //setfetchedData(Storage.all.get())
-        //setItems([])
     },[])
 
-    /*
-    useEffect(()=>{
-        const fbObject = Storage.all.get()
-        console.log(fbObject+" brrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr")
-        const newArr = Object.keys(fbObject).map((key) => {
-            fbObject[key].id = key;
-            return fbObject[key];
-        }); 
-
-        console.log("hehere",fbObject)
-        if(fetchedData["_W"])
-            setItems(fetchedData["_W"])
-    },[fetchedData])
-    */
     useEffect(()=>{
         console.log("rerender")
 
@@ -115,8 +97,6 @@ function MainItems(props){
     function onPressPlus(){
         withdrawInput("add")
         setActiveTo(-1);
-        //if (Items)
-        //    faltList.current.scrollToIndex({index: 0})
     }
 
     function onPressEdit(itemId){
@@ -130,10 +110,6 @@ function MainItems(props){
         setShowDelete(false)
     }
 
-    function onPressHeart(itemId){
-        
-    }
-
     function addItem(count, title){
         let newId = Items.length > 0 ? Items[0].id + 1 : 0 
         let newItem = {id: newId, count: count, title: title, checked: false}
@@ -145,8 +121,6 @@ function MainItems(props){
             console.log(`new item: ${newItem} end`)
             setItems(list)
         })
-        
-        
     }
 
     function deleteItem(itemId){
